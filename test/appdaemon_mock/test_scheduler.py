@@ -144,6 +144,14 @@ class Test_scheduling_and_dispatch:
         callback_mock.assert_not_called()
 
     @pytest.mark.asyncio
+    async def test_timer_running_true_before_timeout(self, scheduler: MockScheduler):
+        callback_mock = mock.Mock()
+        now = await scheduler.get_now()
+        handle = await scheduler.insert_schedule('', now + datetime.timedelta(seconds=10), callback_mock, False, None)
+        assert await scheduler.timer_running('', handle)
+
+
+    @pytest.mark.asyncio
     async def test_time_is_correct_when_callback_it_run(self, scheduler: MockScheduler):
         scheduler.sim_set_start_time(datetime.datetime(2020, 1, 1, 12, 0))
 

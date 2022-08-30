@@ -88,6 +88,7 @@ class HassMocks:
             MockHandler(Hass, 'run_hourly'),
             MockHandler(Hass, 'run_minutely'),
             MockHandler(Hass, 'run_every'),
+            SpyMockHandler(Hass, 'timer_running'),
             SpyMockHandler(Hass, 'cancel_timer'),
 
             ### Sunrise and sunset functions

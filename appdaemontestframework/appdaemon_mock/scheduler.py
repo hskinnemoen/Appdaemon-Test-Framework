@@ -39,6 +39,12 @@ class MockScheduler:
             if callback.handle == handle:
                 self._registered_callbacks.remove(callback)
 
+    async def timer_running(self, name, handle):
+        for callback in self._registered_callbacks:
+            if callback.handle == handle:
+                return True
+        return False
+
     def convert_naive(self, dt):
         # Is it naive?
         result = None
