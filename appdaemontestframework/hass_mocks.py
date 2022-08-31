@@ -97,7 +97,9 @@ class HassMocks:
 
             ### Listener callback registrations functions
             MockHandler(Hass, 'listen_event'),
+            MockHandler(Hass, 'cancel_listen_event'),
             MockHandler(Hass, 'listen_state'),
+            MockHandler(Hass, 'cancel_listen_state'),
 
             ### State functions / attr
             MockHandler(Hass, 'set_state'),
