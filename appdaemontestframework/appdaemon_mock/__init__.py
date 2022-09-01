@@ -24,9 +24,7 @@ def sync_wrapper(coro):
             start_new_loop = True
 
         if start_new_loop is True:
-            f = asyncio.ensure_future(coro(self, *args, **kwargs))
-            asyncio.get_event_loop().run_until_complete(f)
-            f = f.result()
+            f = asyncio.run(coro(self, *args, **kwargs))
         else:
             # don't use create_task. It's python3.7 only
             f = asyncio.ensure_future(coro(self, *args, **kwargs))
