@@ -120,6 +120,7 @@ class HassMocks:
 
             ### Miscellaneous Helper Functions
             MockHandler(Hass, 'entity_exists'),
+            MockHandler(Hass, 'get_app')
         ]
 
         # Generate a dictionary of mocked Hass functions for use by older code
